@@ -12,3 +12,4 @@ or contact Tim Finin, finin@umbc.edu
 
 If you use Pfc in your research, please cite the 1989 IEEE CAIA paper mentioned above.
 
+This version has been modified by Stephen Cranefield for compatibility with SWI Prolog. The operators '=>' and '<=' have been changed to '==>' and '<==' to avoid clashes with built-in SWI Prolog operators. For consistency, '<=>' was also changed to '<==>'.
