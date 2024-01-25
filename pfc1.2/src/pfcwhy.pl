@@ -91,9 +91,9 @@ pfcAsk(Msg,Ans) :-
 
 pfcSelectJustificationNode(Js,Index,Step) :-
   JustNo is integer(Index),
-  nth(JustNo,Js,Justification),
-  StepNo is 1+ integer(Index*10 - JustNo*10),
-  nth(StepNo,Justification,Step).
+  nth1(JustNo,Js,Justification),
+  StepNo is integer(Index*10 - JustNo*10),
+  nth1(StepNo,Justification,Step).
  
 
 

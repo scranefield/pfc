@@ -62,11 +62,11 @@ pfcClassifyFacts([H|T],User,[H|Pfc],Rule) :-
   pfcClassifyFacts(T,User,Pfc,Rule).
 
 pfcPrintRules :-
-  bagof((P=>Q),clause((P=>Q),true),R1),
+  bagof((P==>Q),clause((P==>Q),true),R1),
   pfcPrintitems(R1),
-  bagof((P<=>Q),clause((P<=>Q),true),R2),
+  bagof((P<==>Q),clause((P<==>Q),true),R2),
   pfcPrintitems(R2),
-  bagof((P<=Q),clause((P<=Q),true),R3),
+  bagof((P<==Q),clause((P<==Q),true),R3),
   pfcPrintitems(R3).
 
 pfcPrintTriggers :-

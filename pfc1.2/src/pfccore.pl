@@ -8,9 +8,9 @@
 
 :- use_module(library(lists)).
 
-:- dynamic ('=>')/2.
+:- dynamic ('==>')/2.
 :- dynamic ('::::')/2.
-%:- dynamic '<=>'/2.
+%:- dynamic '<==>'/2.
 :- dynamic 'pt'/2.
 :- dynamic 'nt'/3.
 :- dynamic 'bt'/2.
@@ -49,7 +49,7 @@ pfcDefault(GeneralTerm,Default) :-
 
 add(P) :-  add(P,(user,user)).
 
-add((=>P),S) :- add(P,S).
+add((==>P),S) :- add(P,S).
 
 add(P,S) :- 
   post(P,S),
@@ -536,24 +536,24 @@ fc1(Fact) :-
 %% a rule.
 %% 
 
-fc_rule_check((P=>Q)) :-  
+fc_rule_check((P==>Q)) :-  
   !,  
-  processRule(P,Q,(P=>Q)).
-fc_rule_check((Name::::P=>Q)) :- 
+  processRule(P,Q,(P==>Q)).
+fc_rule_check((Name::::P==>Q)) :- 
   !,  
-  processRule(P,Q,(Name::::P=>Q)).
-fc_rule_check((P<=>Q)) :- 
+  processRule(P,Q,(Name::::P==>Q)).
+fc_rule_check((P<==>Q)) :- 
   !, 
-  processRule(P,Q,(P<=>Q)), 
-  processRule(Q,P,(P<=>Q)).
-fc_rule_check((Name::::P<=>Q)) :- 
+  processRule(P,Q,(P<==>Q)), 
+  processRule(Q,P,(P<==>Q)).
+fc_rule_check((Name::::P<==>Q)) :- 
   !, 
-  processRule(P,Q,((Name::::P<=>Q))), 
-  processRule(Q,P,((Name::::P<=>Q))).
+  processRule(P,Q,((Name::::P<==>Q))), 
+  processRule(Q,P,((Name::::P<==>Q))).
 
-fc_rule_check(('<='(P,Q))) :-
+fc_rule_check(('<=='(P,Q))) :-
   !,
-  pfcDefineBcRule(P,Q,('<='(P,Q))).
+  pfcDefineBcRule(P,Q,('<=='(P,Q))).
 
 fc_rule_check(_).
 
@@ -875,13 +875,13 @@ pfcConnective(';').
 pfcConnective(',').
 pfcConnective('/').
 pfcConnective('|').
-pfcConnective(('=>')).
-pfcConnective(('<=')).
-pfcConnective('<=>').
+pfcConnective(('==>')).
+pfcConnective(('<==')).
+pfcConnective('<==>').
 
 pfcConnective('-').
 pfcConnective('~').
-pfcConnective('\+').
+pfcConnective('\\+').
 
 processRule(Lhs,Rhs,ParentRule) :-
   copy_term(ParentRule,ParentRuleCopy),
@@ -954,9 +954,9 @@ buildTest(Test,Test).
 
 %% simple typeing for pfc objects
 
-pfcType(('=>'(_,_)),Type) :- !, Type=rule.
-pfcType(('<=>'(_,_)),Type) :- !, Type=rule.
-pfcType(('<='(_,_)),Type) :- !, Type=rule.
+pfcType(('==>'(_,_)),Type) :- !, Type=rule.
+pfcType(('<==>'(_,_)),Type) :- !, Type=rule.
+pfcType(('<=='(_,_)),Type) :- !, Type=rule.
 pfcType(pt(_,_,_),Type) :- !, Type=trigger.
 pfcType(pt(_,_),Type) :- !, Type=trigger.
 pfcType(nt(_,_,_),Type) :- !,  Type=trigger.

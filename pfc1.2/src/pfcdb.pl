@@ -15,9 +15,9 @@ pfcDatabaseTerm(support3/3).
 pfcDatabaseTerm(pt/3).
 pfcDatabaseTerm(bt/3).
 pfcDatabaseTerm(nt/4).
-pfcDatabaseTerm('=>'/2).
-pfcDatabaseTerm('<=>'/2).
-pfcDatabaseTerm('<='/2).
+pfcDatabaseTerm('==>'/2).
+pfcDatabaseTerm('<==>'/2).
+pfcDatabaseTerm('<=='/2).
 pfcDatabaseTerm(pfcQueue/1).
 
 % removes all forward chaining rules and justifications from db.
